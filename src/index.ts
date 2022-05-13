@@ -114,6 +114,14 @@ async function main() {
     ])
   })
   console.log(table.toString())
+
+  const totalProfit = round(
+    portfolioResult.reduce((acc, result) => acc + result.profit, 0),
+    2,
+  )
+  let totalProfitString = `${totalProfit >= 0 ? '↑' : '↓'} ₹ ${totalProfit}`
+  totalProfitString = totalProfit >= 0 ? colors.green(totalProfitString) : colors.red(totalProfitString)
+  console.log(`Net Profit/Loss - ${totalProfitString}`)
 }
 
 main()
